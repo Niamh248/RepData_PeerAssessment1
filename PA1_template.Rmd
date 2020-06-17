@@ -7,9 +7,31 @@ output:
 
 
 ## Loading and preprocessing the data
+```{r unzip, cache = TRUE}
+library(ggplot2)
+library(plyr)
+unzip("activity.zip",exdir = "data")
+
+```
+
+```{r reading, cache = TRUE}
+
+activity <- read.csv("data/activity.csv", stringsAsFactors=FALSE)
+str(activity)
+summary(activity)
+```
 
 
+##pulling data without nas
+```{r}
+activity$day <- weekdays(as.Date(activity$date))
+activity$DateTime<- as.POSIXct(activity$date, format="%Y-%m-%d")
 
+##pulling data without nas
+clean <- activity[!is.na(activity$steps),]
+head(activity$date)
+head(activity$day)
+```
 ## What is mean total number of steps taken per day?
 
 
