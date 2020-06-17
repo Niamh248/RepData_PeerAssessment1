@@ -7,14 +7,14 @@ output:
 
 
 ## Loading and preprocessing the data
-```{r unzip, cache = TRUE}
+```{r unzip, cache = TRUE, echo = TRUE}
 library(ggplot2)
 library(plyr)
 unzip("activity.zip",exdir = "data")
 
 ```
 
-```{r reading, cache = TRUE}
+```{r reading, cache = TRUE, echo = TRUE}
 
 activity <- read.csv("data/activity.csv", stringsAsFactors=FALSE)
 str(activity)
@@ -23,7 +23,7 @@ summary(activity)
 
 
 ##pulling data without nas
-```{r}
+```{r, echo = TRUE}
 activity$day <- weekdays(as.Date(activity$date))
 activity$DateTime<- as.POSIXct(activity$date, format="%Y-%m-%d")
 
@@ -33,15 +33,28 @@ head(activity$date)
 head(activity$day)
 ```
 ## What is mean total number of steps taken per day?
+```{r, echo = TRUE}
+TotalStepsPerDay <- tapply(activity$steps, activity$date, sum)
+hist(TotalStepsPerDay, xlab = "Number of Steps", main = "Histogram: Steps per Day")
 
+```
+###Calculate and report the mean and median of the total number of steps taken per day
+```{r, echo = TRUE}
+meanStepsPerDay <-  mean(TotalStepsPerDay, na.rm = TRUE)
+medianStepsPerDay <-  median(TotalStepsPerDay, na.rm = TRUE)
+```
 
 
 ## What is the average daily activity pattern?
-
+```{r, echo = TRUE}
+```
 
 
 ## Imputing missing values
-
+```{r, echo = TRUE}
+```
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
+```{r, echo = TRUE}
+```

@@ -68,6 +68,18 @@ head(activity$day)
 ```
 ## What is mean total number of steps taken per day?
 
+```r
+TotalStepsPerDay <- tapply(activity$steps, activity$date, sum)
+hist(TotalStepsPerDay, xlab = "Number of Steps", main = "Histogram: Steps per Day")
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+###Calculate and report the mean and median of the total number of steps taken per day
+
+```r
+meanStepsPerDay <-  mean(TotalStepsPerDay, na.rm = TRUE)
+medianStepsPerDay <-  median(TotalStepsPerDay, na.rm = TRUE)
+```
 
 
 ## What is the average daily activity pattern?
@@ -79,3 +91,4 @@ head(activity$day)
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
+
